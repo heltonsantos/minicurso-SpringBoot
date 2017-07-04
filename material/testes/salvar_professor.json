@@ -1,0 +1,9 @@
+{
+    "nome": "Helton",
+    "siape": "9999",
+    "categoria": "Adjunto 2",
+    "salario": "2000",
+    "departamento":{
+    	"id":"1"
+    }
+}
