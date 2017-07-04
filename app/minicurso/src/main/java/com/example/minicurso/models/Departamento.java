@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
@@ -30,6 +31,7 @@ public class Departamento implements Serializable{
 	
 	private String nome;
 	
+	@JsonManagedReference(value="departamento_professor")
 	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
 	private List<Professor> professores;
 	

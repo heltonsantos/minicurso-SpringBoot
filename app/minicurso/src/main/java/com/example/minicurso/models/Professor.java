@@ -14,7 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
@@ -35,10 +37,12 @@ public class Professor implements Serializable{
 	private String categoria;
 	private Long salario;
 	
+	@JsonBackReference(value="departamento_professor")
 	@ManyToOne
 	@JoinColumn(name = "departamento_id", nullable = false)
 	private Departamento departamento;
 	
+	@JsonManagedReference(value="professor_aulas")
 	@OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
 	private List<Ministra> aulas;
 

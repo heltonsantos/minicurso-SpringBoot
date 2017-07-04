@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,10 +24,12 @@ public class Ministra implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@JsonBackReference(value="professor_aulas")
 	@ManyToOne
 	@JoinColumn(name = "professor_id", nullable = false)
 	private Professor professor;
 	
+	@JsonBackReference(value="disciplina_aulas")
 	@ManyToOne
 	@JoinColumn(name = "disciplina_id", nullable = false)
 	private Disciplina disciplina;
