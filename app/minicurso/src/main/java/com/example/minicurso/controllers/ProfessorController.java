@@ -1,5 +1,7 @@
 package com.example.minicurso.controllers;
 
+import java.util.List;
+
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,12 @@ public class ProfessorController {
 	public @ResponseBody Professor postBuscarPorId(@RequestBody String professor_id) throws JSONException{
 		Professor professor =  professorRepository.findOne(Long.parseLong(professor_id));
 		return professor;
+	}
+	
+	@PostMapping(path="/listar")
+	public @ResponseBody List<Professor> listar() throws JSONException{
+		List<Professor> lista =  (List<Professor>) professorRepository.findAll();
+		return lista;
 	}
 	
 	@PostMapping(path="/salvar")

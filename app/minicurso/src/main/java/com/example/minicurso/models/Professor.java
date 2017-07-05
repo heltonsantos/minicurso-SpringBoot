@@ -31,8 +31,8 @@ public class Professor implements Serializable{
 	
 	private String nome;
 	
-	@Column(unique=true)
-	private String siape;
+	@Column(unique=true, length=11)
+	private String cpf;
 	
 	private String categoria;
 	private Long salario;
@@ -67,12 +67,12 @@ public class Professor implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getSiape() {
-		return siape;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setSiape(String siape) {
-		this.siape = siape;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getCategoria() {
