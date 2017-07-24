@@ -2,6 +2,7 @@ package com.example.minicurso.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,7 @@ public class Ministra implements Serializable{
 	@JoinColumn(name = "disciplina_id", nullable = false)
 	private Disciplina disciplina;
 	
+	@Column(nullable = false)
 	private String periodo;
 	
 	public Ministra() {

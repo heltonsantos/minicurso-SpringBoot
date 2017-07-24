@@ -32,13 +32,16 @@ public class Professor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String nome;
 	
-	@Column(unique=true, length=11)
+	@Column(nullable = false, unique=true, length=11)
 	private String cpf;
 	
-	@Column(unique=true)
+	@Column(nullable = false)
 	private String categoria;
+	
+	@Column(nullable = false)
 	private Long salario;
 	
 	@JsonBackReference(value="departamento_professor")

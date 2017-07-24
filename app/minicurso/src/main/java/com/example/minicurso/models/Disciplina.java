@@ -25,7 +25,10 @@ public class Disciplina implements Serializable{
 	@Column(unique=true)
 	private String codigo_disciplina;
 	
+	@Column(nullable = false)
 	private String nome;
+	
+	@Column(nullable = false)
 	private String carga_horaria;
 	
 	public Disciplina() {

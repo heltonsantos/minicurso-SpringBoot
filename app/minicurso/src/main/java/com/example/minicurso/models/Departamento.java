@@ -29,9 +29,10 @@ public class Departamento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique=true)
+	@Column(nullable = false, unique=true)
 	private String codigo_departamento;
 	
+	@Column(nullable = false)
 	private String nome;
 	
 	@JsonManagedReference(value="departamento_professor")
