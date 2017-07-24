@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -32,6 +35,7 @@ public class Departamento implements Serializable{
 	private String nome;
 	
 	@JsonManagedReference(value="departamento_professor")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
 	private List<Professor> professores;
 	

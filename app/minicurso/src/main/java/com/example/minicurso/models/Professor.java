@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -34,6 +37,7 @@ public class Professor implements Serializable{
 	@Column(unique=true, length=11)
 	private String cpf;
 	
+	@Column(unique=true)
 	private String categoria;
 	private Long salario;
 	
@@ -43,6 +47,7 @@ public class Professor implements Serializable{
 	private Departamento departamento;
 	
 	@JsonManagedReference(value="professor_aulas")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
 	private List<Ministra> aulas;
 
