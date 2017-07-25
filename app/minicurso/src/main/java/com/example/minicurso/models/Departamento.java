@@ -67,6 +67,16 @@ public class Departamento implements Serializable{
 
 	public void setCodigo_departamento(String codigo_departamento) {
 		this.codigo_departamento = codigo_departamento;
-	}	
+	}
+
+	public List<Professor> getProfessores() {
+		return professores;
+	}
+
+	public void setProfessores(List<Professor> professores) {
+		this.professores = professores;
+	}
+	
+	
 
 }

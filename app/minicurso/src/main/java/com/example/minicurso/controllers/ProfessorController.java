@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.minicurso.models.Professor;
+import com.example.minicurso.models.dto.DepartamentoProfessor;
 import com.example.minicurso.repositories.ProfessorRepository;
+import com.example.minicurso.services.ProfessorService;
 
 @Controller
 @RequestMapping(path="/professor")
@@ -21,6 +23,9 @@ public class ProfessorController {
 	
 	@Autowired
 	ProfessorRepository professorRepository;
+	
+	@Autowired
+	ProfessorService professorService;
 	
 	@GetMapping(path="/getBuscarPorId")
 	public @ResponseBody Professor getBuscarPorId(@RequestParam(value="professor_id") Long professor_id) throws JSONException{
@@ -44,6 +49,15 @@ public class ProfessorController {
 	public @ResponseBody Professor postBuscarPorId(@RequestBody Professor professor) throws JSONException{
 		Professor professorSalvo =  professorRepository.save(professor);
 		return professorSalvo;
+	}
+	
+	@GetMapping(path="/getTeste")
+	public @ResponseBody DepartamentoProfessor getTeste(@RequestParam(value="professor_id") Long professor_id,
+			@RequestParam(value="departamento_id") Long departamento_id) throws JSONException{
+		
+		DepartamentoProfessor departamentoProfessor = professorService.retornaProfessorDepartamento(professor_id, departamento_id);
+		
+		return departamentoProfessor;
 	}
 
 }
